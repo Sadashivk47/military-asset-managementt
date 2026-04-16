@@ -7,6 +7,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(cors({
+  origin: 'https://vercel.app', // Your actual Vercel URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 /* ================= FAKE AUTH ================= */
 app.use((req, res, next) => {
   const role = req.headers["role"] || "admin";
